@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Registration</title>
+    </h:head>
+    <h:body>
+        <h:outputText value="Create a new user. Enter your login and password"/>
+            <h:form>
+                <h:commandButton value="Main Page" action="index.xhtml?faces-redirect=true"/><br/>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Username"/>
+                    <h:inputText value="#{signUpBean.name}" />
+
+                    <h:outputLabel value="Password"/>
+                    <h:inputText value="#{signUpBean.password}" />
+                    
+                    <h:outputLabel value="Repeat password"/>
+                    <h:inputText value="#{signUpBean.repeatPassword}"/>
+                    
+                    <h:commandButton value="Create" action="#{signUpBean.create()}"/>
+                    
+                </h:panelGrid>
+                 
+            </h:form>
+    </h:body>
+</html>
+
