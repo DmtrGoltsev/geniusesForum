@@ -18,10 +18,10 @@
                 
             </div>
             <div class="index-div1">
-                    <h:commandButton rendered="#{loginBean.name==null}" value="Login" action="login.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
-                    <h:commandButton rendered="#{loginBean.name==null}" value="Sign Up" action="signUp.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
+                    <h:commandButton rendered="#{loginBean.isLogged==false}" value="Login" action="login.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
+                    <h:commandButton rendered="#{loginBean.isLogged==false}" value="Sign Up" action="signUp.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
                     <h:commandButton value="Forum" action="forum.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
-                    <h:commandButton rendered="#{loginBean.name!=null}" value="Logout" action="logout.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
+                    <h:commandButton rendered="#{loginBean.isLogged==true}" value="Logout" action="logout.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
             </div>
             <div class="index-div1">
                 <p>

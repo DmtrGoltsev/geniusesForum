@@ -13,6 +13,7 @@ import java.io.Serializable;
 //For send a message
 import java.util.Properties;
 import java.util.Random;
+import javax.faces.bean.SessionScoped;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -23,7 +24,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 @ManagedBean(name = "signUpBean")
-@RequestScoped
+@SessionScoped
 public class signUpBean{
     
     private String name;
