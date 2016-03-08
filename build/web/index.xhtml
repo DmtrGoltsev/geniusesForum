@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Main Page</title>
+        <h:outputStylesheet library="css" name="page.css"/>
+    </h:head>
+    <h:body styleClass="page-body">
+        
+        <header class="header">
+                <h4> TEAM FORUM </h4>
+        </header>
+
+        <h:form styleClass="feed">
+            <div class="index-imagebox">
+                <img src="" alt="image" />
+                
+            </div>
+            <div class="index-div1">
+                    <h:commandButton rendered="#{loginBean.name==null}" value="Login" action="login.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
+                    <h:commandButton rendered="#{loginBean.name==null}" value="Sign Up" action="signUp.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
+                    <h:commandButton value="Forum" action="forum.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
+                    <h:commandButton rendered="#{loginBean.name!=null}" value="Logout" action="logout.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
+            </div>
+            <div class="index-div1">
+                <p>
+                </p>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+
