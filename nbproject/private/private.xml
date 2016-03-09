@@ -5,8 +5,12 @@
         <group>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/beans/loginBean.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/beans/signUpBean.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/src/java/filters/loginFilter.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/index.xhtml</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/signUp.xhtml</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/forum.xhtml</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/resources/css/page.css</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/geniusesForum/web/topic.xhtml</file>
         </group>
     </open-files>
 </project-private>

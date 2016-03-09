@@ -81,8 +81,8 @@ public class signUpBean{
     }
     
     public void sendEmailMess(){
-        final String username = "dmtr.goltsev@gmail.com";
-        final String password = "jhfg511726503543";
+        final String username = "teamforumnetcrec@gmail.com";
+        final String password = "7894Jhfgbeio";
         secretCode = createSecretCode();
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -99,7 +99,7 @@ public class signUpBean{
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("dmtr.goltsev@gmail.com"));
+            message.setFrom(new InternetAddress("teamforumnetcrec@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email));
             message.setSubject("Team Forum");
