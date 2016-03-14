@@ -5,15 +5,23 @@
  */
 package beans;
 
+import DAO.Factory;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.Locale;
 
 
 //For send a message
 import java.util.Properties;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -22,10 +30,11 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import logic.User;
 
 @ManagedBean(name = "signUpBean")
 @SessionScoped
-public class signUpBean{
+public class signUpBean implements Serializable{
     
     private String name;
     private String password;
@@ -33,7 +42,17 @@ public class signUpBean{
     private String inputCode;
     private String email;
     private String secretCode;
+    private UIComponent mybutton;
+    
+    public void setMybutton(UIComponent mybutton) {
+    this.mybutton = mybutton;
+    }
 
+    public UIComponent getMybutton() {
+        return mybutton;
+    }
+     
+    
     public String getEmail() {
         return email;
     }
@@ -80,7 +99,8 @@ public class signUpBean{
         return code;
     }
     
-    public void sendEmailMess(){
+    public void sendEmailMess() throws SQLException{
+        if (this.create()){
         final String username = "teamforumnetcrec@gmail.com";
         final String password = "7894Jhfgbeio";
         secretCode = createSecretCode();
@@ -113,17 +133,61 @@ public class signUpBean{
                 throw new RuntimeException(e);
         }
     }
-    
-    public String verification(){
-        if(inputCode.equals(secretCode)) return "index.xhtml?faces-redirect=true";
-        else return "signUp.xhtml";
     }
     
-    public void create(){
+    public String verification() throws SQLException{
+        if(inputCode.equals(secretCode)) {
+             Locale.setDefault(Locale.ENGLISH);
+             User s1 = new User();
+             //s1.setId(7l);
+             s1.setName(this.getName());
+             s1.setPassword(this.getPassword());
+             s1.setRights("User");
+             Factory.getInstance().getUserDAO().addUser(s1);
+        return "index.xhtml?faces-redirect=true";
+        }
+        else return "topic.xhtml";
         
+    }
+        
+    public boolean create() throws SQLException{
+        Locale.setDefault(Locale.ENGLISH);
+        if (!this.password.equals(this.repeatPassword)){
+             FacesMessage message = new FacesMessage("Incorrect password or email. Try again");
+             FacesContext context = FacesContext.getCurrentInstance();
+             context.addMessage(mybutton.getClientId(context), message);
+        return false;
+        } 
+        
+        String EMAIL_PATTERN = 
+        "^[_A-Za-z0-9-]+(\\." +
+        "[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*" +
+        "(\\.[A-Za-z]{2,})$";
+         Pattern pattern;
+         pattern = Pattern.compile(EMAIL_PATTERN);
+         Matcher matcher = pattern.matcher(this.email);
+        
+         if (!matcher.matches()) {
+             FacesMessage msg = new FacesMessage("Invalid email format. Try again");
+             FacesContext context = FacesContext.getCurrentInstance();
+             context.addMessage(mybutton.getClientId(context), msg);
+        return false;
+         }
+         if(!Factory.getInstance().getUserDAO().getUserByName(this.name).getName().equals("") ) {
+             FacesMessage msg = new FacesMessage("Sorry, this nick is used. Try again");
+             FacesContext context = FacesContext.getCurrentInstance();
+             context.addMessage(mybutton.getClientId(context), msg); 
+         return false;
+         } 
+        if(!Factory.getInstance().getUserDAO().getUserByMale(this.email).getName().equals("") ) {
+             FacesMessage msg = new FacesMessage("Sorry, but this mail is used. Try again");
+             FacesContext context = FacesContext.getCurrentInstance();
+             context.addMessage(mybutton.getClientId(context), msg); 
+        return false; 
+        } 
+    return true;
     }
     
     public signUpBean() {
     }
-    
-}
+    }

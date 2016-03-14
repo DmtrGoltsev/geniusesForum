@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Registration</title>
     </h:head>
@@ -11,21 +12,21 @@
                 <h:commandButton value="Main Page" action="index.xhtml?faces-redirect=true"/><br/>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Username"/>
-                    <h:inputText value="#{signUpBean.name}" />
-
+                    <h:inputText value="#{signUpBean.name}" title="Username" tabindex="1" required="true" requiredMessage="Username is required"/>
+                   
                     <h:outputLabel value="Password"/>
                     <h:inputText value="#{signUpBean.password}" />
-                    
+   
                     <h:outputLabel value="Repeat password"/>
                     <h:inputText value="#{signUpBean.repeatPassword}"/>
-                    
-                    <h:commandButton value="Create account" action="#{signUpBean.create()}"/>
                     
                 </h:panelGrid>
                 <table>
                     <tr>
                         <td><h:outputLabel value="Enter your email and we send you a secret code to complete registration"/></td>
-                        <td><h:inputText value="#{signUpBean.email}"/></td>
+                        <td><h:inputText value="#{signUpBean.email}"
+                        size="20" required="true" label="Email"/></td>
+                      
                     </tr>
                     <tr>
                         <td>
@@ -39,6 +40,7 @@
                 </table>
                 <p>
                     <h:commandButton value="Verification" action="#{signUpBean.verification()}"/>
+                    <h:commandButton id="mybutton" value="Create account" binding="#{signUpBean.mybutton}"  action="#{signUpBean.create()}"/>
                 </p>
             </h:form>
     </h:body>
