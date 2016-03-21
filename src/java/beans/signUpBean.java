@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Locale;
 
 
@@ -43,7 +44,7 @@ public class signUpBean implements Serializable{
     private String email;
     private String secretCode;
     private UIComponent mybutton;
-    
+    private static long id=5;
     public void setMybutton(UIComponent mybutton) {
     this.mybutton = mybutton;
     }
@@ -123,8 +124,8 @@ public class signUpBean implements Serializable{
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email));
             message.setSubject("Team Forum");
-            message.setText("Hello Dear friend, it's a code for verification : " + secretCode);
-
+           // message.setText("<i>Hello</i> Dear friend, it's a code for verification : " + secretCode);
+            message.setContent("<span style=\"font-family:Lucida Sans Unicode; font-weight: bold; font-style:italic; font-size:20px;font-variant:small-caps; color:CornflowerBlue\"><i><h2>Hello Dear friend!</h2></i><h3>it's a code for verification :</h3>" + secretCode + "</span>", "text/html");
             Transport.send(message);
 
             System.out.println("Done");
@@ -139,10 +140,15 @@ public class signUpBean implements Serializable{
         if(inputCode.equals(secretCode)) {
              Locale.setDefault(Locale.ENGLISH);
              User s1 = new User();
-             //s1.setId(7l);
+             s1.setId(++id);
              s1.setName(this.getName());
              s1.setPassword(this.getPassword());
              s1.setRights("User");
+             s1.setEmail(this.email);
+             Date d = new Date(19000l);
+            
+            
+             s1.setDate(d);
              Factory.getInstance().getUserDAO().addUser(s1);
         return "index.xhtml?faces-redirect=true";
         }

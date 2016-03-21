@@ -18,9 +18,14 @@
                 <h:inputSecret value="#{loginBean.password}" id="password" requiredMessage="Please, fill this field"/>
                 <h:message for="password" class="error_message"/>
                 
-                <h:commandButton value="Login" action="#{loginBean.login()}"/>
+                
+             
+                 <h:commandButton id="mybutton" value="Login" binding="#{loginBean.mybutton}"  action="#{loginBean.login()}"/>
                 
             </h:panelGrid>
+       
+            
+                 
         </h:form>
     </h:body>
 </html>

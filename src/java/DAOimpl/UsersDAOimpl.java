@@ -74,7 +74,7 @@ public class UsersDAOimpl implements UsersDAO {
                 session = HibernateUtil.getSessionFactory().openSession();
                 studs = session.createCriteria(User.class).list();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
+                //JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка I/O", JOptionPane.OK_OPTION);
             } finally {
                 if (session != null && session.isOpen()) {
                     session.close();

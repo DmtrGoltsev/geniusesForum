@@ -22,8 +22,8 @@ public class User  {
     @Id    
    @Column(name="USER_ID")    
   // @GeneratedValue(strategy = GenerationType.IDENTITY) 
-   private long  id;
-   @Column(name = "USER_NAME")    
+    private long  id;
+    @Column(name = "USER_NAME")    
     private String name;
     @Column (name = "PASSWORD_HASH")     
     private String password;
@@ -31,8 +31,8 @@ public class User  {
     private String rights;
     @Column (name = "EMAIL")
     private String email;
-//@Column (name = "DATE_N")
-   // private String d;
+    @Column (name = "DATE_N")
+    private Date date;
     public User (long id,String name,String password, String rights ){
     
         this.id = id;
@@ -81,7 +81,13 @@ public class User  {
     public void setRights(String rights){
         this.rights = rights;
     }   
-
-
+    
+    public void setDate (Date d){
+        this.date = d;
+    }
+    
+    public Date getDate(){
+        return this.date;
+    }
 
 }
