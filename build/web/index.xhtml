@@ -8,31 +8,26 @@
     </h:head>
     <h:body styleClass="page-body">
         
-        <h:form styleClass="header">
-                <h4 class='title'> TEAM FORUM </h4>
-                <h:commandButton rendered="#{loginBean.isLogged==true}" value="Logout" action="logout.xhtml?faces-redirect=true" styleClass="header-button"/><br/>
-        </h:form>
-        
+        <header class="header">
+                <h4> TEAM FORUM </h4>
+        </header>
+
         <h:form styleClass="feed">
-            
-            <div class='index-imagebox'>
-                <img src="resources/images/im2.png" alt="image" />
-            </div> 
-            
+            <div class="index-imagebox">
+                <img src="" alt="image" />
+                
+            </div>
             <div class="index-div1">
                 <h:commandButton rendered="#{loginBean.isLogged==false}" value="Login" action="login.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
-                <h:commandButton rendered="#{loginBean.isLogged==false}" value="Sign Up" action="signUp.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
-                <h:commandButton value="Forum" action="forum.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
-                <div class="index-div2">
-                    <p>
-                    Project description will be placed here later. Image can be replaced with
-                    more appropriate one. Text text text text text.
-                    </p>
-                </div>
+                    <h:commandButton rendered="#{loginBean.isLogged==false}" value="Sign Up" action="signUp.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
+                    <h:commandButton value="Forum" action="forum.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
+                    <h:commandButton rendered="#{loginBean.isLogged==true}" value="Logout" action="logout.xhtml?faces-redirect=true" styleClass="index-button"/><br/>
             </div>
-            <div class="clear"></div> 
+            <div class="index-div1">
+                <p>
+                </p>
+            </div>
         </h:form>
-        
     </h:body>
 </html>
 

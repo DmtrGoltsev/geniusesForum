@@ -60,10 +60,6 @@ html{
     box-shadow: 0 0 3px -1px;
 }
 
-.navigation-ref{
-    text-decoration: none;        
-}
-
 .index-div1{
     background-color: white;
     text-align: center;
@@ -83,12 +79,10 @@ html{
 
 .index-button{
     background-color: gold;
-    text-align: center;
     border: 1px black;
-    width: 70px;
+    width: 60px;
     height: 25px;
-    margin-top: 20px; 
-    padding: 0px;
+    margin-top: 20px;    
     box-shadow: 0 0 3px -1px;
 }
 
@@ -100,11 +94,6 @@ html{
     margin-top: 30px;
     margin-left: 40px;
 }
-
-.login-div1{
-       margin: 40px;
-       text-align: left;       
-   }
 
 .clear {
     clear: left; /* Отмена обтекания */
